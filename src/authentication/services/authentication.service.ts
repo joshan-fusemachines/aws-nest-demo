@@ -25,16 +25,19 @@ export class AuthenticationService {
     await queryRunner.startTransaction();
 
     try {
+      console.log('1');
       const authentication = await this._createAuthentication(
         registrationDto,
         queryRunner,
       );
+      console.log('2');
 
       user = await this._userService.createUser(
         registrationDto,
         authentication,
         queryRunner,
       );
+      console.log('3');
 
       await queryRunner.commitTransaction();
     } catch (error) {

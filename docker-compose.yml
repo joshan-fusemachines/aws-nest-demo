@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  nest-app:
+    build:
+      context: .
+      target: development # Change this target based on the environment
+    ports:
+      - '${PORT}:7000' # Adjust the port based on the environment
+    environment:
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_LOG: ${POSTGRES_LOG}
+      SYNCRONIZE_DB: ${SYNCRONIZE_DB}
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - '${POSTGRES_PORT}:5432' # Adjust the port based on the environment

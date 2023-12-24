@@ -5,6 +5,6 @@ import { CreateAuthenticationDto } from '../../authentication/dtos';
 export class CreateUserDto extends CreateAuthenticationDto {
   @IsString()
   @IsNotEmpty()
-  @ApiProperty()
+  @ApiProperty({ example: 'Joshan' })
   readonly firstName: string;
 }

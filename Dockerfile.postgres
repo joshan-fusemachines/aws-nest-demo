@@ -1,0 +1,12 @@
+# Use the official PostgreSQL image
+FROM postgres:13
+
+# Set environment variables
+ENV POSTGRES_DB=nestjs-authentication-development
+ENV POSTGRES_USER=joshan-dev
+ENV POSTGRES_PASSWORD=joshan-dev
+ENV POSTGRES_HOST=localhost
+ENV POSTGRES_PORT=5431
+
+# Expose the PostgreSQL port
+EXPOSE 5431

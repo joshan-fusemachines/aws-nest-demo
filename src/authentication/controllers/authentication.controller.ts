@@ -6,11 +6,10 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { UserDto } from 'src/user/dtos';
-import { UserEntity } from 'src/user/entities';
 import { RegistrationDto } from '../dtos/registration.dto';
 import { AuthenticationService } from '../services';
 
-@Controller('Authentication')
+@Controller('authentication')
 @ApiTags('Authentication')
 export class AuthenticationController {
   constructor(private readonly _authenticationService: AuthenticationService) {}
@@ -22,9 +21,8 @@ export class AuthenticationController {
     description: 'User with that email already exists.',
   })
   @ApiInternalServerErrorResponse({ description: 'Internal server error' })
-  async registration(
-    @Body() registrationDto: RegistrationDto,
-  ): Promise<UserEntity> {
+  async registration(@Body() registrationDto: RegistrationDto) {
+    console.log('1');
     return this._authenticationService.registration(registrationDto);
   }
 }
